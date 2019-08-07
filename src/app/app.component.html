@@ -1,0 +1,19 @@
+<div class="container-fluid">
+    <app-sidebar (collapse)="collapseMenu()"> </app-sidebar>
+
+    <div class="row" style="height: 91vh;">
+        <div [ngClass]="{'hide': collapsed, 'col-md-3': !collapsed}">
+            <div class="row py-5">
+                <mat-nav-list>
+                    <a mat-list-item class="nav-link" *ngFor="let nav of fillerNav" [routerLink]="nav.route">
+                        <mat-icon class="icono" routerLinkActive="active">{{nav.icon}}</mat-icon>
+                        {{nav.name}}
+                    </a>
+                </mat-nav-list>
+            </div>
+        </div>
+        <div [ngClass]="{'col-md-12': collapsed, 'col-md-9': !collapsed}">
+            <router-outlet></router-outlet>
+        </div>
+    </div>
+</div>
